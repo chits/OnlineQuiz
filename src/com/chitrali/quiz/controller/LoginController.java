@@ -1,6 +1,7 @@
 package com.chitrali.quiz.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chitrali.quiz.DatabaseConnection;
+import com.chitrali.quiz.Profile;
 
 /**
  * Servlet implementation class LoginController
@@ -55,14 +57,20 @@ public class LoginController extends HttpServlet {
 		 if(i!=0)
 		 {   HttpSession session=request.getSession();
 		     session.setAttribute("user",username);
-			 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsps/home.jsp");
+		     Profile profile = new Profile(request.getSession().getAttribute("user").toString());
+				request.getSession().setAttribute("profileList", profile.getProfileInfo());
+			 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsps/profile.jsp");
 			 rd.forward(request, response);
-			 
 		 }
 		 else
-		 {   request.setAttribute("errorMessage","Invalid username or password");
-			 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsps/login.jsp");
-			 rd.forward(request, response);
+		 {  
+			 PrintWriter out = response.getWriter();  
+			 response.setContentType("text/html");  
+			 out.println("<script type=\"text/javascript\">");  
+			 out.println("alert('Invalid user credentials');");
+			 out.println("location='login';");
+			 out.println("</script>");		
+			 out.close();
 		 }
 		}catch(SQLException sqe){System.out.println("Error : While Fetching records from database");}
 		try

@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">  
 <style type="text/css">
 body {
 	background: url("${pageContext.request.contextPath}/images/green_cup.png");
@@ -12,9 +14,10 @@ body {
 </style>
 <title>Review Exam</title>
 </head>
-
 <body>
-<h1 align="center">Quiz Review</h1><br>
+<div id='cssmenu'>
+	<h1 align="center">Quiz Review</h1>
+</div>
 
 <c:forEach var="q" items="${requestScope.reviewQuestions}" varStatus="counter">
 <br>
@@ -48,7 +51,7 @@ ________________________________________________________________________________
 
 
 <div align="center">
-  <a href='${pageContext.request.contextPath}/'><img  height="50" width="50" src="${pageContext.request.contextPath}/images/home.jpg"></img></a>
+  <a href='${pageContext.request.contextPath}/profile'>Home</a>
   </div>
 </body>
 </html>

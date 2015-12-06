@@ -1,6 +1,9 @@
 package com.chitrali.quiz.controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.chitrali.quiz.DatabaseConnection;
 import com.chitrali.quiz.Exam;
+import com.chitrali.quiz.Profile;
 import com.chitrali.quiz.QuizQuestion;
 
 /**
@@ -119,8 +124,32 @@ public class ExamController extends HttpServlet {
 			}
 			else if("Finish Exam".equals(action)||( minute==0 && second==0))
 			{   finish=true;			    
-				int result=exam.calculateResult(exam,exam.questionList.size());					
-				request.setAttribute("result",result);				
+				int result=exam.calculateResult(exam,exam.questionList.size());
+				Connection con=DatabaseConnection.createConnection();
+				try
+				{
+					 Statement st=con.createStatement();
+					 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss a");
+					 Date date = new Date();
+					 String endTime=dateFormat.format(date);
+					 String sql = "INSERT INTO profile values ('"+session.getAttribute("user")+"','"+session.getAttribute("exam")+"','"+endTime+"','"+result+"')";
+					 st.executeUpdate(sql);
+				}
+				catch(SQLException sqe)
+				{
+					System.out.println("Error : While Inserting record in database");
+				}
+				try
+				{
+				 con.close();	
+				}
+				catch(SQLException se)
+				{
+					System.out.println("Error : While Closing Connection");
+				}
+				request.setAttribute("result",result);		
+				Profile profile = new Profile(session.getAttribute("user").toString());
+				session.setAttribute("profileList",profile.getProfileInfo());
 				request.getRequestDispatcher("/WEB-INF/jsps/result.jsp").forward(request,response);
 				
 			}

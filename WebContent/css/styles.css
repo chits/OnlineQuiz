@@ -3,6 +3,10 @@
   background: #787474;
   width: auto;
 }
+#cssmenu h1{
+	color:#ffffff;
+	font-family: 'Open Sans', sans-serif;
+}
 #cssmenu ul {
   list-style: none;
   margin: 0;

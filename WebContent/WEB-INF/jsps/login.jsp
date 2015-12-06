@@ -5,7 +5,7 @@
 <head>
    
     <title>
-        HTML Document Structure
+        Login Page
     </title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
@@ -29,48 +29,36 @@ body {
 <body>
 
 <div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}/'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/register'><span>Register</span></a></li>
-  <!--  <li class='#'><a href='#'><span>Submit a Question</span></a></li>
-    <li class=''><a href='#'><span>Feedback</span></a></li>
-   <li><a href='#'><span>Contribute</span></a></li>
-   <li><a href='#'><span>Contact us</span></a></li> -->
-</ul>
+	<h1 align="center">Welcome to Online Quiz Portal</h1>
 </div>
 
-<div style="position:absolute;left:500px;top:75px">
-Don`t have an account, click here to <a href='${pageContext.request.contextPath}/register'>Register</a>
-<br/>
-<h3 align="center">${errorMessage}</h3>
-</div>
-<div id="wrapper">
-
+<div id="wrapper" align="center">
 	<form name="login-form" class="login-form" action="checkLogin" method="post">
 	
-		<div class="header">
-		<h1>Login </h1>
+		<div class="header" align="center">
+		<h1>Login</h1>
 		<span></span>
 		</div>
 	
-		<div class="content">
-		<input name="username" type="text" class="input username" placeholder="Username" />
-		<div class="user-icon"></div>
-		<input name="password" type="password" class="input password" placeholder="Password" />
-		<div class="pass-icon"></div>		
+		<div class="content" style="text-align:center">
+			<input name="username" type="text" class="input username" placeholder="Username" />
+			<input name="password" type="password" class="input password" placeholder="Password" />
 		</div>
 
-		<div class="footer">
-		<input type="submit" name="submit" value="Login" class="button" />
-		
+		<div class="footer" style="text-align:center">
+			<input type="submit" name="submit" value="Login" class="button" />
 		</div>
 	
 	</form>
-
 </div>
 <div class="gradient"></div>
-
+<div style="position:relative;" align="center">
+	<h3 align="center">${errorMessage}</h3>
+</div>
+<div style="position:relative;" align="center">
+	Don`t have an account, click here to <a href='${pageContext.request.contextPath}/register'>Register</a>
+	<br/>
+</div>
 
 </body>
 </html>

@@ -6,7 +6,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>home</servlet-name>
-    <servlet-class>co.edureka.quiz.controller.MainController</servlet-class>
+    <servlet-class>com.chitrali.quiz.controller.MainController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>home</servlet-name>

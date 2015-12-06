@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-    <style type="text/css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"> 
+<style type="text/css">
 body {
 	background: url("${pageContext.request.contextPath}/images/green_cup.png");
 }
@@ -15,9 +16,10 @@ body {
 <title>Result</title>
 </head>
 <body>
-
-<div style="position:absolute;left:500px;top:70px">
-<h3 align="center">Quiz Result</h3>
+<div id='cssmenu'>
+	<h1 align="center">Quiz Result</h1>
+</div>
+<div style="position:relative;top:70px" align="center">
 <table border=1>
         <tr>
             <td class="head">
@@ -52,6 +54,8 @@ body {
         </tr>
         
     </table>
+<br>
+<br>
 
 <c:if test="${requestScope.result >= 5}">
    <h3 align="center">Passed</h3>
@@ -59,9 +63,10 @@ body {
 <c:if test="${requestScope.result < 5}">
    <h3 align="center">Failed</h3>
 </c:if>
+<br><br>
 <h3 align="center"><a href='${pageContext.request.contextPath}/exam/review'>Review Answers</a></h3><br>
-<h3 align="center"><a href='${pageContext.request.contextPath}/'>Take Another Exam</a></h3><br>
-<h3 align="center"><a href='${pageContext.request.contextPath}/'>Back to HomePage</a></h3>
+<h3 align="center"><a href='${pageContext.request.contextPath}/chooseQuiz'>Take Another Exam</a></h3><br>
+<h3 align="center"><a href='${pageContext.request.contextPath}/profile'>Back to Profile</a></h3>
 </div>
 
 </body>

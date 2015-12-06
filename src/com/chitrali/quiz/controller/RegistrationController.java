@@ -1,11 +1,11 @@
 package com.chitrali.quiz.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,23 +35,42 @@ public class RegistrationController extends HttpServlet {
 		String username=request.getParameter("username");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
+		if(username == "" || password == "" || email == "")
+		{
+			PrintWriter out = response.getWriter();  
+	        response.setContentType("text/html");  
+			out.println("<script type=\"text/javascript\">");  
+	        out.println("alert('Fields cannot be empty');");
+	        out.println("location='register';");
+	        out.println("</script>");		
+			out.close();
+		}
 		
 		Connection con=DatabaseConnection.createConnection();
 		
 		try
 		{
-		 Statement st=con.createStatement();
-		 String sql = "INSERT INTO users values ('"+username+"','"+email+"','"+password+"')";
-		 		System.out.println(sql);
-		 st.executeUpdate(sql);
-		}catch(SQLException sqe){System.out.println("Error : While Inserting record in database");}
-		try
-		{
-		 con.close();	
-		}catch(SQLException se){System.out.println("Error : While Closing Connection");}
-        request.setAttribute("newUser",username);
-		RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/jsps/regSuccess.jsp");
-		dispatcher.forward(request, response);		
+			Statement st=con.createStatement();
+			String sql = "INSERT INTO users values ('"+username+"','"+email+"','"+password+"')";
+		 	st.executeUpdate(sql);
+		 	request.setAttribute("newUser",username);
+	        PrintWriter out = response.getWriter();  
+	        response.setContentType("text/html");  
+	        out.println("<script type=\"text/javascript\">");  
+	        out.println("alert('Congratulations! Account created.');");  
+	        out.println("location='login';");
+	        out.println("</script>");		
+			out.close();
+			con.close();
+		}catch(SQLException sqe){
+			PrintWriter out = response.getWriter();  
+	        response.setContentType("text/html");  
+			out.println("<script type=\"text/javascript\">");  
+	        out.println("alert('User name already exists');");
+	        out.println("location='register';");
+	        out.println("</script>");		
+			out.close();
+		}
 	}
 	
 	

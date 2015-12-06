@@ -3,9 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-   
     <title>
-        HTML Document Structure
+        Register
     </title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
@@ -27,38 +26,25 @@ body {
 </style>
 </head>
 <body>
-
 <div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}/'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/register'><span>Register</span></a></li>
-  <!--  <li class='#'><a href='#'><span>Submit a Question</span></a></li>
-    <li class=''><a href='#'><span>Feedback</span></a></li>
-   <li><a href='#'><span>Contribute</span></a></li>
-   <li><a href='#'><span>Contact us</span></a></li> -->
-</ul>
+	<h1 align="center">New User Registration</h1>
 </div>
 
-<div id="wrapper">
-
+<div id="wrapper" align="center">
 	<form name="login-form" class="login-form" action="checkRegister" method="post">
 	
-		<div class="header">
+		<div class="header" align="center">
 		<h1>Register </h1>
 		<span></span>
 		</div>
 	
-		<div class="content">
-		<input name="username" type="text" class="input username" placeholder="Username" />
-		<div class="user-icon"></div><br><br>
-		<input name="email" type="text" class="input username" placeholder="Email" />
-		<div class="user-icon"></div>
-		<input name="password" type="password" class="input password" placeholder="Password" />
-		<div class="pass-icon"></div>		
+		<div class="content" style="text-align:center">
+			<input name="username" type="text" class="input username" placeholder="Username" />
+			<input name="email" type="text" class="input password" placeholder="Email" />
+			<input name="password" type="password" class="input password" placeholder="Password" />	
 		</div>
 
-		<div class="footer">		
+		<div class="footer" style="text-align:center">		
 		<input type="submit" class="button" name="submit" value="Register" class="register" />
 		</div>
 	
@@ -66,7 +52,6 @@ body {
 
 </div>
 <div class="gradient"></div>
-
 
 </body>
 </html>

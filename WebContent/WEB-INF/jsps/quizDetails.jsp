@@ -4,30 +4,69 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-<title>Insert title here</title>
+<title>Quiz Instructions</title>
 <style type="text/css">
 body {
 	background: url("${pageContext.request.contextPath}/images/green_cup.png");
+}
+.button {
+	padding: 10px 15px;
+	font-size: 14px;
+	line-height: 100%;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	color: #fff;
+	
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	font-weight: bold;
+	transition: background 0.1s ease-in-out;
+	-webkit-transition: background 0.1s ease-in-out;
+	-moz-transition: background 0.1s ease-in-out;
+	-ms-transition: background 0.1s ease-in-out;
+	-o-transition: background 0.1s ease-in-out;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	color: #fff;
+	-webkit-border-radius: 40px;
+	-moz-border-radius: 40px;
+	border-radius: 40px;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.button, .button:hover, .button:active {
+	outline: 0 none;
+	text-decoration: none;
+        color: #fff;
+}
+
+.username {
+	background-color: #2ecc71;
+	box-shadow: 0px 3px 0px 0px #239a55;
+}
+
+.quiz {
+	background-color: #0000FF;
+	box-shadow: 0px 3px 0px 0px #239a55;
 }
 </style>
 </head>
 <body>
 <div id='cssmenu'>
-<ul>
-   <li class=''><a href='${pageContext.request.contextPath}/'><span>Home</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/login'><span>Login</span></a></li>
-   <li><a href='${pageContext.request.contextPath}/register'><span>Register</span></a></li>
-  <!--  <li class='#'><a href='#'><span>Submit a Question</span></a></li>
-    <li class=''><a href='#'><span>Feedback</span></a></li>
-   <li><a href='#'><span>Contribute</span></a></li>
-   <li><a href='#'><span>Contact us</span></a></li> -->
-</ul>
+	<h1 align="center">Instructions</h1>
+</div>
+
+<div style="position:absolute;top:70px;left:10px">
+Logged as <a href="${pageContext.request.contextPath}/profile" class="button username">${sessionScope.user}</a>
+</div>
+
+<div style="position:absolute;top:70px;right:10px">
+<a href='${pageContext.request.contextPath}/logout'>Logout</a>
 </div>
 <br><br><br>
-<h2 align="center">Instruction for ${sessionScope.exam} Quiz : </h2>
 
-<div style="position:absolute;left:500px;top:170px">
+<div style="position:relative;top:50px" align = "center">
 <ul style="list-style-type:disc">
  <li>Quiz contains ${sessionScope.totalNumberOfQuizQuestions} Multiple Choice Questions</li>
  <li>Total time for the Quiz is ${sessionScope.quizDuration} Minutes</li>
@@ -39,8 +78,8 @@ body {
 <br><br><br>
 </div>
 
-<div  style="position:absolute;left:600px;top:350px">
-<button onclick="location.href='${pageContext.request.contextPath}/exam'">Start Exam</button>
+<div style="position:relative;top:40px;" align = "center">
+	<a href="${pageContext.request.contextPath}/exam" class="button quiz">Start Exam</a>
 </div>
 
 
