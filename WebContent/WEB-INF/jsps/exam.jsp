@@ -91,7 +91,7 @@ body {
 
 <body onload="examTimer()">
 
-<div style="position:absolute;left:10px;top:20px">
+<div style="position:absolute;left:10px;top:20px;">
 <%
   int currentQuestion=((Exam)request.getSession().getAttribute("currentExam")).getCurrentQuestion();
  %>
@@ -102,7 +102,7 @@ Current Question ${sessionScope.quest.questionNumber+1} / ${sessionScope.totalNu
 </div>
 
 <div style="position:relative;top:50px;margin: 0 auto;width: 50%;">
-	<span>${sessionScope.quest.question}</span><br/><br/>
+	<span><strong>${sessionScope.quest.question}</strong></span><br/><br/>
 
 	<form action="exam" method="post" name="questionForm">
 	 <c:forEach var="choice" items="${sessionScope.quest.questionOptions}" varStatus="counter">

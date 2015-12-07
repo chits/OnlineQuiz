@@ -41,7 +41,7 @@ body {
 		<div class="content" style="text-align:center">
 			<input name="username" type="text" class="input username" placeholder="Username" />
 			<input name="email" type="text" class="input password" placeholder="Email" />
-			<input name="password" type="password" class="input password" placeholder="Password" />	
+			<input name="password" type="password" class="input password" placeholder="Password (Minimum 6 characters)" />	
 		</div>
 
 		<div class="footer" style="text-align:center">		

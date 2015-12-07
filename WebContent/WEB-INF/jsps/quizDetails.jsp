@@ -58,7 +58,7 @@ body {
 </div>
 
 <div style="position:absolute;top:70px;left:10px">
-Logged as <a href="${pageContext.request.contextPath}/profile" class="button username">${sessionScope.user}</a>
+Logged in as <a href="${pageContext.request.contextPath}/profile" class="button username">${sessionScope.user}</a>
 </div>
 
 <div style="position:absolute;top:70px;right:10px">
@@ -68,12 +68,12 @@ Logged as <a href="${pageContext.request.contextPath}/profile" class="button use
 
 <div style="position:relative;top:50px" align = "center">
 <ul style="list-style-type:disc">
- <li>Quiz contains ${sessionScope.totalNumberOfQuizQuestions} Multiple Choice Questions</li>
- <li>Total time for the Quiz is ${sessionScope.quizDuration} Minutes</li>
- <li>You can finish the exam at any time</li>
- <li>Read the question carefully before answering</li>
- <li>You can change your answers before submitting</li>
- <li>Good luck for the test.</li>
+ <li><br><strong>Quiz contains ${sessionScope.totalNumberOfQuizQuestions} Multiple Choice Questions</strong></li>
+ <li><br><strong>Total time for the Quiz is ${sessionScope.quizDuration} Minutes</strong></li>
+ <li><br><strong>You can finish the exam at any time</strong></li>
+ <li><br><strong>Read the question carefully before answering</strong></li>
+ <li><br><strong>You can not go back to a question once you answer</strong></li>
+ <li><br><strong>Good luck for the quiz.</strong></li>
 </ul>  
 <br><br><br>
 </div>

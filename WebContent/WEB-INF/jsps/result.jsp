@@ -22,34 +22,34 @@ body {
 <div style="position:relative;top:70px" align="center">
 <table border=1>
         <tr>
-            <td class="head">
-                Quiz :
+            <td class="head" align="left">
+                <strong>Quiz :</strong>
             </td>
-            <td>
+            <td align="right">
                 <span id="lblSubject">${sessionScope.exam}</span></td>
         </tr>
         <tr>
-            <td class="head">
-                Starting Time :
+            <td class="head" align="left">
+               <strong> Starting Time :</strong>
             </td>
-            <td >
+            <td align="right">
                 <span id="lblStime">${sessionScope.started}</span></td>
         </tr>
         
               
                 <tr>
-            <td class="head">
-               No. of Questions :
+            <td class="head" align="left">
+               <strong>No. of Questions :</strong>
             </td>
-            <td>
+            <td align="right">
                 <span id="lblNquestions">${sessionScope.totalNumberOfQuizQuestions}</span></td>
         </tr>
         
                 <tr>
-            <td class="head">
-                No. of correct answers :
+            <td class="head" align="left">
+                <strong>No. of correct answers :</strong>
             </td>
-            <td>
+            <td align="right">
                 <span id="lblNcans">${requestScope.result}</span></td>
         </tr>
         
@@ -58,10 +58,10 @@ body {
 <br>
 
 <c:if test="${requestScope.result >= 5}">
-   <h3 align="center">Passed</h3>
+   <h3 align="center"><font color="green">Passed</font></h3>
 </c:if>
 <c:if test="${requestScope.result < 5}">
-   <h3 align="center">Failed</h3>
+   <h3 align="center"><font color="red">Failed</font></h3>
 </c:if>
 <br><br>
 <h3 align="center"><a href='${pageContext.request.contextPath}/exam/review'>Review Answers</a></h3><br>

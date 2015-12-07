@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,12 +37,37 @@ public class RegistrationController extends HttpServlet {
 		String username=request.getParameter("username");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
+		String regex= "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+;
+		Pattern pattern =Pattern.compile(regex);
+		Matcher matcher=pattern.matcher(email);
 		if(username == "" || password == "" || email == "")
 		{
 			PrintWriter out = response.getWriter();  
 	        response.setContentType("text/html");  
 			out.println("<script type=\"text/javascript\">");  
 	        out.println("alert('Fields cannot be empty');");
+	        out.println("location='register';");
+	        out.println("</script>");		
+			out.close();
+		}
+		else if(!matcher.matches())
+		{
+			PrintWriter out = response.getWriter();  
+	        response.setContentType("text/html");  
+			out.println("<script type=\"text/javascript\">");  
+	        out.println("alert('Please Enter valid email address');");
+	        out.println("location='register';");
+	        out.println("</script>");		
+			out.close();
+		}
+		else if(password.length()< 6)
+		{
+			PrintWriter out = response.getWriter();  
+	        response.setContentType("text/html");  
+			out.println("<script type=\"text/javascript\">");  
+	        out.println("alert('Minimum Length of password should be 6 characters');");
 	        out.println("location='register';");
 	        out.println("</script>");		
 			out.close();

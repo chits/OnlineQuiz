@@ -114,14 +114,14 @@ public class ExamController extends HttpServlet {
 			    QuizQuestion q=exam.questionList.get(exam.currentQuestion);	
 			  	session.setAttribute("quest",q);
 			}
-			else if("Previous".equals(action))
-			{   System.out.println("You clicked Previous Button");
-				exam.currentQuestion--;
-				exam.setQuestion(exam.currentQuestion);
-			    QuizQuestion q=exam.questionList.get(exam.currentQuestion);	
-				session.setAttribute("quest",q);
-				
-			}
+//			else if("Previous".equals(action))
+//			{   System.out.println("You clicked Previous Button");
+//				exam.currentQuestion--;
+//				exam.setQuestion(exam.currentQuestion);
+//			    QuizQuestion q=exam.questionList.get(exam.currentQuestion);	
+//				session.setAttribute("quest",q);
+//				
+//			}
 			else if("Finish Exam".equals(action)||( minute==0 && second==0))
 			{   finish=true;			    
 				int result=exam.calculateResult(exam,exam.questionList.size());
