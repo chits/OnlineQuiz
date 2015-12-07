@@ -6,6 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * 
+ * @author Chitrali Rai
+ * This class is the model for Profile page for all users.
+ * This is used to model the table shown in profile.jsp
+ * 
+ */
 
 public class Profile {
 	
@@ -17,7 +24,6 @@ public class Profile {
 	public Profile(String _username){
 		username = _username;
 	}
-	
 	public String getUsername(){
 		return username;
 	}
@@ -39,6 +45,12 @@ public class Profile {
 	public void setScore(int _score){
 		score = _score;
 	}
+	
+	/*
+	 * Get details for all quizzes taken by the user
+	 * from the Profile table. This will help to populate
+	 * profile.jsp page
+	 */
 	public List<Profile> getProfileInfo()
 	{
 		Connection con=DatabaseConnection.createConnection();		

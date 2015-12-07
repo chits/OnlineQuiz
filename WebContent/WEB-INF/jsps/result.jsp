@@ -11,7 +11,6 @@
 body {
 	background: url("${pageContext.request.contextPath}/images/green_cup.png");
 }
-
 </style>
 <title>Result</title>
 </head>

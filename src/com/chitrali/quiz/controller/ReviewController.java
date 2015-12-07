@@ -17,7 +17,10 @@ import com.chitrali.quiz.Exam;
 import com.chitrali.quiz.QuizQuestion;
 
 /**
- * Servlet implementation class ReviewController
+ * 
+ * @author Chitrali Rai
+ * Servlet implementation of showing the review answers page for a quiz
+ *
  */
 @WebServlet("/exam/review")
 public class ReviewController extends HttpServlet {
@@ -54,7 +57,6 @@ public class ReviewController extends HttpServlet {
 			NodeList qList=dom.getElementsByTagName("question");
 		    NodeList childList=qList.item(i).getChildNodes();
 		    
-		 
 		    int counter=0;
 		    
 		    for (int j = 0; j < childList.getLength(); j++) {
@@ -75,7 +77,6 @@ public class ReviewController extends HttpServlet {
 	            
 	        }
 		  
-			
 			QuizQuestion q=new QuizQuestion();
 			q.setQuestionNumber(number);
 			q.setQuestion(question);

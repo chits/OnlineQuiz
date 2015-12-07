@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.w3c.dom.Document;
 
 import com.chitrali.quiz.CreateDOM;
-
+/**
+ * 
+ * @author Chitrali Rai
+ * Servlet implementation handling all the navigations between pages
+ */
 @WebServlet(urlPatterns = { "/login", "/register", "/takeExam", "/logout", "/profile","/chooseQuiz" })
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,14 +34,12 @@ public class MainController extends HttpServlet {
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("/WEB-INF/jsps/home.jsp");
 			dispatcher.forward(request, response);
-		} 
-		else if (request.getRequestURI().equals(
+		} else if (request.getRequestURI().equals(
 				applicationContextPath + "/profile")) {
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("/WEB-INF/jsps/profile.jsp");
 			dispatcher.forward(request, response);
-		}
-		else if (request.getRequestURI().equals(
+		} else if (request.getRequestURI().equals(
 				applicationContextPath + "/login")) {
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("/WEB-INF/jsps/login.jsp");
@@ -88,7 +90,5 @@ public class MainController extends HttpServlet {
 					.getRequestDispatcher("/WEB-INF/jsps/login.jsp");
 			dispatcher.forward(request, response);
 		}
-
 	}
-
 }

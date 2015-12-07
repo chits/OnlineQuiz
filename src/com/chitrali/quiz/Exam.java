@@ -12,38 +12,65 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import com.chitrali.quiz.CreateDOM;
+/**
+ * 
+ * @author Chitrali Rai
+ * This class acts as a model Exam list for all subjects
+ * 
+ */
 
 public class Exam {
 	Document dom;
 	public int currentQuestion=0;
 	public int totalNumberOfQuestions=0;
 	public int quizDuration=0;
-	
 	public List<Integer> quizSelectionsList=new ArrayList<Integer>();
-	
-	
+	public Map<Integer,Integer> selections=new LinkedHashMap<Integer,Integer>();
+	public ArrayList<QuizQuestion> questionList;
+	/*
+	 * get and set for all variables
+	 */
 	public List<Integer> getQuizSelectionsList() {
 		return quizSelectionsList;
 	}
-
-	public Map<Integer,Integer> selections=new LinkedHashMap<Integer,Integer>();
 	
-	public ArrayList<QuizQuestion> questionList;
+	public ArrayList<QuizQuestion> getQuestionList(){
+		return this.questionList;
+	}
 	
-	public Exam(String test,int totalNumberOfQuestions) throws SAXException,ParserConfigurationException,IOException, URISyntaxException{
-		dom=CreateDOM.getDOM(test);
-		for(int i=0;i<totalNumberOfQuestions;i++){
-			selections.put(i,-1);
-		}
-		questionList=new ArrayList<QuizQuestion>(totalNumberOfQuestions);
-		
+	public int getCurrentQuestion(){
+		return currentQuestion;
+	}
+	
+	public Map<Integer,Integer> getSelections(){
+		return this.selections;
 	}
 	
 	public Document getDom(){
 		return dom;
 	}
 	
-		
+	public int getTotalNumberOfQuestions(){
+		return totalNumberOfQuestions;
+	}
+   
+	public void setTotalNumberOfQuestions(int i){
+		this.totalNumberOfQuestions=i;
+	}
+	
+	// Constructor
+	public Exam(String test,int totalNumberOfQuestions) throws SAXException,ParserConfigurationException,IOException, URISyntaxException{
+		dom=CreateDOM.getDOM(test);
+		for(int i=0;i<totalNumberOfQuestions;i++){
+			selections.put(i,-1);
+		}
+		questionList=new ArrayList<QuizQuestion>(totalNumberOfQuestions);
+	}
+	
+	/*
+	 * Setting question based on the DOM read from the
+	 * input XML's
+	 */
 	public void setQuestion(int i)
 	{ 
 		int number=i;
@@ -82,21 +109,12 @@ public class Exam {
 		q.setQuestionOptions(options);	
 		
 		questionList.add(number,q);
-		
 	}
 	
-	
-	public ArrayList<QuizQuestion> getQuestionList(){
-		return this.questionList;
-	}
-	
-	public int getCurrentQuestion(){return currentQuestion;}
-	
-	public Map<Integer,Integer> getSelections(){
-		return this.selections;
-	}
-	
-	
+	/*
+	 * Calculating result based on user input
+	 * against the correct answers in the xml
+	 */
 	public int calculateResult(Exam exam,int taken){
 		int totalCorrect=0;
 		Map<Integer,Integer> userSelectionsMap=exam.selections;		
@@ -104,7 +122,6 @@ public class Exam {
 		for (Map.Entry<Integer, Integer> entry :userSelectionsMap.entrySet()) {
 			userSelectionsList.add(entry.getValue());
 		}
-		
 		quizSelectionsList=userSelectionsList;
 		
 		List<QuizQuestion> questionList=exam.questionList;
@@ -113,7 +130,6 @@ public class Exam {
 		for(QuizQuestion question: questionList){
 			correctAnswersList.add(question.getCorrectOptionIndex());
 		}
-		
 		
 		for(int i=0;i<taken-1;i++){
 			
@@ -126,22 +142,10 @@ public class Exam {
 		return totalCorrect;
 	}
 	
-	
-	
+	//Get user selection
 	public int getUserSelectionForQuestion(int i){
 		Map<Integer,Integer> map=getSelections();
-		
 		return (Integer) map.get(i);
-	}	
-	
-	
-	public int getTotalNumberOfQuestions(){
-		return totalNumberOfQuestions;
-	}
-   
-	public void setTotalNumberOfQuestions(int i){
-		this.totalNumberOfQuestions=i;
-	}
-	
+	}		
 	
 }

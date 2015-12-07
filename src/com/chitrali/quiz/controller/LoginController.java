@@ -19,7 +19,10 @@ import com.chitrali.quiz.DatabaseConnection;
 import com.chitrali.quiz.Profile;
 
 /**
- * Servlet implementation class LoginController
+ * 
+ * @author Chitrali Rai
+ * Servlet implementation of login authentication flow functionality
+ *
  */
 @WebServlet("/checkLogin")
 public class LoginController extends HttpServlet {
@@ -58,7 +61,7 @@ public class LoginController extends HttpServlet {
 		 {   HttpSession session=request.getSession();
 		     session.setAttribute("user",username);
 		     Profile profile = new Profile(request.getSession().getAttribute("user").toString());
-				request.getSession().setAttribute("profileList", profile.getProfileInfo());
+		     request.getSession().setAttribute("profileList", profile.getProfileInfo());
 			 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/jsps/profile.jsp");
 			 rd.forward(request, response);
 		 }
@@ -78,8 +81,4 @@ public class LoginController extends HttpServlet {
 		 con.close();	
 		}catch(SQLException se){System.out.println("Error : While Closing Connection");}
 	}
-		
-		
-	
-
 }

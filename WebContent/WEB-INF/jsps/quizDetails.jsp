@@ -82,6 +82,5 @@ Logged in as <a href="${pageContext.request.contextPath}/profile" class="button 
 	<a href="${pageContext.request.contextPath}/exam" class="button quiz">Start Exam</a>
 </div>
 
-
 </body>
 </html>

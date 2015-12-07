@@ -1,5 +1,11 @@
 package com.chitrali.quiz;
-
+/**
+ * 
+ * @author Chitrali Rai
+ * This class provides the model for all questions shown up on jsp
+ * from input xml
+ * 
+ */
 public class QuizQuestion {
 	
 	int questionNumber;

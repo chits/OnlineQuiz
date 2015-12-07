@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.chitrali.quiz.DatabaseConnection;
 
 /**
- * Servlet implementation class RegistrationController
+ * 
+ * @author Chitrali Rai
+ * Servlet implementation of registering a new user
  */
 @WebServlet("/checkRegister")
 public class RegistrationController extends HttpServlet {
@@ -31,15 +33,13 @@ public class RegistrationController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    
-    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String username=request.getParameter("username");
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		String regex= "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-;
+		
 		Pattern pattern =Pattern.compile(regex);
 		Matcher matcher=pattern.matcher(email);
 		if(username == "" || password == "" || email == "")
@@ -99,8 +99,4 @@ public class RegistrationController extends HttpServlet {
 			out.close();
 		}
 	}
-	
-	
-	
-
 }
