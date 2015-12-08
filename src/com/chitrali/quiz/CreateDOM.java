@@ -14,16 +14,23 @@ import org.xml.sax.SAXException;
 /**
  * 
  * @author Chitrali Rai
- * This class is to get the DOM eleemts from the input xml
+ * This class is to get the DOM elements from the input xml
  * 
  */
 
 public class CreateDOM {
 	
-	/*
+	/**
 	 * Parses the input xml quiz file to get all DOM elements
 	 * to be displayed for individual subjects.
+	 * @param test subject
+	 * @return parsed Document 
+	 * @throws SAXException
+	 * @throws ParserConfigurationException
+	 * @throws IOException
+	 * @throws URISyntaxException
 	 */
+	
 	public static Document getDOM(String subject) throws SAXException,ParserConfigurationException,IOException, URISyntaxException
 	{
 		Document dom=null;

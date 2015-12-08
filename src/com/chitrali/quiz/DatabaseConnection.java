@@ -3,26 +3,38 @@ package com.chitrali.quiz;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
- * 
+ * This is a class for making the connection with the database
  * @author Chitrali Rai
- * This is the database connection class
+ *
  */
 public class DatabaseConnection {
 	
-	static String dbURL="jdbc:oracle:thin:@prophet.njit.edu:1521:course";
-	static String dbUser="cr252";
-	static String dbPassword="CKHMs7icB";
-	/*
-	 * Loads Oracle driver and creates connection with database
+	/**
+	 * URL of the database host and database on it
+	 */
+	static String dbURL="jdbc:mysql://localhost/quiz";
+	/**
+	 * User name of database connection
+	 */
+	static String dbUser="root";
+	/**
+	 * Database password
+	 */
+	static String dbPassword="chits25";
+	
+	/**
+	 * Loads Mysql driver and creates connection with database
 	 * for read write operations.
+	 * @return the connection object
 	 */
 	public static Connection createConnection()
 	{
 		Connection con=null;
 		try{
 			try {
-				   Class.forName("oracle.jdbc.driver.OracleDriver");
+				   Class.forName("com.mysql.jdbc.Driver");
 				}
 				catch(ClassNotFoundException ex) {
 				   System.out.println("Error: unable to load driver class!");

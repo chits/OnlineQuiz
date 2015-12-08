@@ -5,7 +5,7 @@
 <head>
    
     <title>
-        Login Page
+        Home Page
     </title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
@@ -52,9 +52,9 @@ body {
 	</form>
 </div>
 <div class="gradient"></div>
-<div style="position:relative;" align="center">
+<%-- <div style="position:relative;" align="center">
 	<h3 align="center">${errorMessage}</h3>
-</div>
+</div> --%>
 <div style="position:relative;" align="center">
 	Don`t have an account, click here to <a href='${pageContext.request.contextPath}/register'>Register</a>
 	<br/>

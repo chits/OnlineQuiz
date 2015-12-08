@@ -72,6 +72,7 @@ public class RegistrationController extends HttpServlet {
 	        out.println("</script>");		
 			out.close();
 		}
+		else{
 		
 		Connection con=DatabaseConnection.createConnection();
 		
@@ -97,6 +98,7 @@ public class RegistrationController extends HttpServlet {
 	        out.println("location='register';");
 	        out.println("</script>");		
 			out.close();
+		}
 		}
 	}
 }

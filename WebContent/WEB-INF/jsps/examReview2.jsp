@@ -21,7 +21,7 @@ body {
 
 <c:forEach var="q" items="${requestScope.reviewQuestions}" varStatus="counter">
 <br>
-${counter.count}. ${q.question}<br/><br/>
+<strong>${counter.count}. ${q.question}</strong><br/><br/>
 
 <c:forEach var="option" items="${q.questionOptions}" varStatus="counter">
 ${counter.count}.   ${option}<br/><br/>

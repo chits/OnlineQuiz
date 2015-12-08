@@ -12,14 +12,17 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import com.chitrali.quiz.CreateDOM;
-/**
- * 
- * @author Chitrali Rai
- * This class acts as a model Exam list for all subjects
- * 
- */
 
+
+/**
+ * This class acts as a model Exam list for all subjects
+ * @author Chitrali Rai
+ *
+ */
 public class Exam {
+	/**
+	 * Document object 
+	 */
 	Document dom;
 	public int currentQuestion=0;
 	public int totalNumberOfQuestions=0;
