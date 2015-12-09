@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chitrali.quiz.DatabaseConnection;
+import com.chitrali.quiz.DBHandler;
 
 /**
  * 
@@ -74,7 +74,7 @@ public class RegistrationController extends HttpServlet {
 		}
 		else{
 		
-		Connection con=DatabaseConnection.createConnection();
+		Connection con=DBHandler.createConnection();
 		
 		try
 		{

@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="/Users/cr252/Downloads/mai-sy-pr/src/ezm/WebRoot/WEB-INF/lib/mysql-connector-java-3.1.8-bin.jar"/>
 	<classpathentry kind="lib" path="/Users/cr252/Downloads/mai-sy-pr/src/ezm/WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="/Users/cr252/Downloads/mai-sy-pr/src/ezm/WebRoot/WEB-INF/lib/mysql.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

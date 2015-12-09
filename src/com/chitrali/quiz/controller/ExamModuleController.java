@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chitrali.quiz.DatabaseConnection;
-import com.chitrali.quiz.Exam;
+import com.chitrali.quiz.DBHandler;
+import com.chitrali.quiz.ExamModule;
 import com.chitrali.quiz.Profile;
-import com.chitrali.quiz.QuizQuestion;
+import com.chitrali.quiz.QuizModule;
 
 /**
  * 
@@ -26,7 +26,7 @@ import com.chitrali.quiz.QuizQuestion;
  *
  */
 @WebServlet("/exam")
-public class ExamController extends HttpServlet {
+public class ExamModuleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +49,7 @@ public class ExamController extends HttpServlet {
 		     Object ob= session.getAttribute("totalNumberOfQuizQuestions");
 		     
 		     String sob=(String)ob;
-			 Exam newExam=new Exam(selectedExam,Integer.parseInt(sob));
+			 ExamModule newExam=new ExamModule(selectedExam,Integer.parseInt(sob));
 			 session.setAttribute("currentExam",newExam);
 			 String sq=(String)request.getSession().getAttribute("totalNumberOfQuizQuestions");
 			
@@ -62,11 +62,11 @@ public class ExamController extends HttpServlet {
 		
 		}catch(Exception e){e.printStackTrace();}
 		
-        Exam exam=(Exam)request.getSession().getAttribute("currentExam");		
+        ExamModule exam=(ExamModule)request.getSession().getAttribute("currentExam");		
         
         if(exam.currentQuestion==0){	
 			exam.setQuestion(exam.currentQuestion);
-		    QuizQuestion q=exam.questionList.get(exam.currentQuestion);	
+		    QuizModule q=exam.questionList.get(exam.currentQuestion);	
 			session.setAttribute("quest",q);
         }
 			
@@ -114,13 +114,13 @@ public class ExamController extends HttpServlet {
 			if("Next".equals(action)){
 				exam.currentQuestion++;
 				exam.setQuestion(exam.currentQuestion);
-			    QuizQuestion q=exam.questionList.get(exam.currentQuestion);	
+			    QuizModule q=exam.questionList.get(exam.currentQuestion);	
 			  	session.setAttribute("quest",q);
 			}
 			else if("Finish Exam".equals(action)||( minute==0 && second==0))
 			{   finish=true;			    
 				int result=exam.calculateResult(exam,exam.questionList.size());
-				Connection con=DatabaseConnection.createConnection();
+				Connection con=DBHandler.createConnection();
 				try
 				{
 					 Statement st=con.createStatement();

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chitrali.quiz.DatabaseConnection;
+import com.chitrali.quiz.DBHandler;
 import com.chitrali.quiz.Profile;
 
 /**
@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 		
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");				
-		Connection con=DatabaseConnection.createConnection();		
+		Connection con=DBHandler.createConnection();		
 		ResultSet set=null;
 		int i=0;
 		try

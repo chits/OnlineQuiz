@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
  * 
  */
 
-public class CreateDOM {
+public class ParseXmlToDom {
 	
 	/**
 	 * Parses the input xml quiz file to get all DOM elements
@@ -31,7 +31,7 @@ public class CreateDOM {
 	 * @throws URISyntaxException
 	 */
 	
-	public static Document getDOM(String subject) throws SAXException,ParserConfigurationException,IOException, URISyntaxException
+	public static Document parseXmlStructure(String subject) throws SAXException,ParserConfigurationException,IOException, URISyntaxException
 	{
 		Document dom=null;
 		File quizFile=null;

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.w3c.dom.Document;
 
-import com.chitrali.quiz.CreateDOM;
+import com.chitrali.quiz.ParseXmlToDom;
 /**
  * 
  * @author Chitrali Rai
@@ -32,7 +32,7 @@ public class MainController extends HttpServlet {
 		} else if (request.getRequestURI().equals(
 				applicationContextPath + "/chooseQuiz")) {
 			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("/WEB-INF/jsps/home.jsp");
+					.getRequestDispatcher("/WEB-INF/jsps/subjects.jsp");
 			dispatcher.forward(request, response);
 		} else if (request.getRequestURI().equals(
 				applicationContextPath + "/profile")) {
@@ -68,10 +68,10 @@ public class MainController extends HttpServlet {
 				
 			} else {
 				RequestDispatcher dispatcher = request
-						.getRequestDispatcher("/WEB-INF/jsps/quizDetails.jsp");
+						.getRequestDispatcher("/WEB-INF/jsps/quizModule.jsp");
 				Document document=null;
 				try{
-				document=CreateDOM.getDOM(exam);
+				document=ParseXmlToDom.parseXmlStructure(exam);
 				
 				request.getSession().setAttribute("totalNumberOfQuizQuestions",document.getElementsByTagName("totalQuizQuestions").item(0).getTextContent());
 				request.getSession().setAttribute("quizDuration",document.getElementsByTagName("quizDuration").item(0).getTextContent());

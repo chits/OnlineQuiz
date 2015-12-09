@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * @author Chitrali Rai
  *
  */
-public class DatabaseConnection {
+public class DBHandler {
 	
 	/**
 	 * URL of the database host and database on it

@@ -93,7 +93,7 @@ body {
 
 <div style="position:absolute;left:10px;top:20px;">
 <%
-  int currentQuestion=((Exam)request.getSession().getAttribute("currentExam")).getCurrentQuestion();
+  int currentQuestion=((ExamModule)request.getSession().getAttribute("currentExam")).getCurrentQuestion();
 %>
 Current Question ${sessionScope.quest.questionNumber+1} / ${sessionScope.totalNumberOfQuizQuestions}
 </div>

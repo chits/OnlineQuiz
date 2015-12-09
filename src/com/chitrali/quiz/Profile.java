@@ -6,33 +6,63 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+
 /**
- * 
- * @author Chitrali Rai
  * This class is the model for Profile page for all users.
  * This is used to model the table shown in profile.jsp
- * 
+ * @author Chitrali Rai
+ *
  */
-
 public class Profile {
 	
+	/**
+	 * Username
+	 */
 	String username;
+	/**
+	 * Subject of quiz
+	 */
 	String subject;
+	/**
+	 * Date when quiz is taken
+	 */
 	String date;
+	/**
+	 * Score
+	 */
 	int score;
 	
+	/**
+	 * Constructor
+	 * @param _username
+	 */
 	public Profile(String _username){
 		username = _username;
 	}
+	/**
+	 * Getter
+	 * @return username
+	 */
 	public String getUsername(){
 		return username;
 	}
+	/**
+	 * Getter
+	 * @return subject
+	 */
 	public String getSubject(){
 		return subject;
 	}
+	/**
+	 * @return date
+	 */
 	public String getDate(){
 		return date;
 	}
+	/**
+	 * @return Score
+	 */
 	public int getScore(){
 		return score;
 	}
@@ -51,9 +81,15 @@ public class Profile {
 	 * from the Profile table. This will help to populate
 	 * profile.jsp page
 	 */
+	/**
+	 * Get details for all quizzes taken by the user
+	 * from the Profile table. This helps to populate
+	 * profile.jsp page
+	 * @return List of all quizzes taken by user
+	 */
 	public List<Profile> getProfileInfo()
 	{
-		Connection con=DatabaseConnection.createConnection();		
+		Connection con=DBHandler.createConnection();		
 		ResultSet set=null;
 		List<Profile> profileList = new ArrayList<Profile>();
 		try

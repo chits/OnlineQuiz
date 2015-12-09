@@ -13,8 +13,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.chitrali.quiz.Exam;
-import com.chitrali.quiz.QuizQuestion;
+import com.chitrali.quiz.ExamModule;
+import com.chitrali.quiz.QuizModule;
 
 /**
  * 
@@ -23,13 +23,13 @@ import com.chitrali.quiz.QuizQuestion;
  *
  */
 @WebServlet("/exam/review")
-public class ReviewController extends HttpServlet {
+public class ExamReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewController() {
+    public ExamReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,11 +40,11 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Exam exam=(Exam)request.getSession().getAttribute("currentExam");
+		ExamModule exam=(ExamModule)request.getSession().getAttribute("currentExam");
 		
 		request.setAttribute("totalQuestion",exam.getTotalNumberOfQuestions());
 		
-		ArrayList<QuizQuestion> reviewQuestionList=new ArrayList<QuizQuestion>();
+		ArrayList<QuizModule> reviewQuestionList=new ArrayList<QuizModule>();
 		
 		Document dom=exam.getDom();
 		
@@ -77,7 +77,7 @@ public class ReviewController extends HttpServlet {
 	            
 	        }
 		  
-			QuizQuestion q=new QuizQuestion();
+			QuizModule q=new QuizModule();
 			q.setQuestionNumber(number);
 			q.setQuestion(question);
 			q.setCorrectOptionIndex(correct);
@@ -86,7 +86,7 @@ public class ReviewController extends HttpServlet {
 			reviewQuestionList.add(number,q);
 		}
 		request.setAttribute("reviewQuestions",reviewQuestionList);		
-		request.getRequestDispatcher("/WEB-INF/jsps/examReview2.jsp").forward(request,response);
+		request.getRequestDispatcher("/WEB-INF/jsps/examReview.jsp").forward(request,response);
 	}
 
 	/**
